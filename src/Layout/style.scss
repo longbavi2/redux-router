@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: orange;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+}
+.main{
+    margin-bottom: 30px;
+}
+.footer{
+    text-align: center;
+    background-color: orange;
+    padding: 10px;
+}
