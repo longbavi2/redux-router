@@ -5,9 +5,6 @@ function Home(){
     const result = useSelector(state => state.product)
     return (
         <>
-        <h5>
-            Danh Sách sản phẩm
-        </h5>
         <ProductList/>
         </>
     )

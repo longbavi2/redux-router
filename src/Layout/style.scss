@@ -9,9 +9,42 @@ a{
 .header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: orange;
     padding: 10px 20px;
     margin-bottom: 30px;
+    &__logo{
+        width: 60px;
+        height: 60px;
+        img{
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+        }
+    }
+    &__cart{
+        font-size: 25px;
+        a{
+            color: white;
+            position: relative;
+            span{
+                position: absolute;
+                font-size: 10px;
+                color: white;
+                top: 1px;
+                right: -6px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 15px;
+                width: 15px;
+                text-align: center;
+                background-color: red;
+                border-radius: 50%;
+                border: 1px solid white;
+            }
+        }
+    }
 }
 .main{
     margin-bottom: 30px;
@@ -20,4 +53,7 @@ a{
     text-align: center;
     background-color: orange;
     padding: 10px;
+    font-size: 30px;
+    font-weight: 700;
 }
+

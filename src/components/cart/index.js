@@ -1,44 +1,31 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ProductCart from "../productCart";
+import { useEffect, useState } from "react";
 var TongTien = 0;
-// var TongTien1 = 0;
-function Cart(){
+function Cart() {
     const result = useSelector(state => state.product)
-    const arrResult=result.map(item => {
-        const PriceNew = (item.data.price - (item.data.price)*(item.data.discountPercentage)/100).toFixed(0); 
-        const Tong = PriceNew*(item.quantity)
-        return Tong;
-    });
-    // const arrTest =()=>{
-    //     TongTien1=0;
-    //     arrResult.forEach(item => {
-    //         TongTien1 +=item;
-    //     });
-    //     return TongTien1;
-    // }
-    // console.log(arrTest())
-    const Price =()=>{
-        const arrFinal = arrResult.reduce((item,tong)=>{
-            tong +=item;
-            TongTien=tong;
-             return TongTien
-        },0)
-        return arrFinal;
+    const calCoins = () => {
+        let totalCoins = result.reduce((total, curenCoins) => {
+            const PriceNew = (curenCoins.data.price - (curenCoins.data.price) * (curenCoins.data.discountPercentage) / 100).toFixed(0);
+            const coins = PriceNew * (curenCoins.quantity);
+            return total + coins;
+        }, 0)
+        return totalCoins;
     }
-    const PriceFinal =Price();
+    const totalCoins = calCoins();
     return (
         <>
-           {result.length > 0 ? (
-            <>
-            <div style={{marginBottom:"5px"}}>
-                    Tổng Tiền :
-                    {TongTien > 0 ? (<>{PriceFinal}$</>) : (<>0 $</>)}
-                </div>
-            {result.map(item =>(
-                <ProductCart item={item} key={item.id}/>
-            ))}
-            </>
-           ):(<>Chưa có gì</>)}
+            {result.length > 0 ? (
+                <>
+                    <div style={{ marginBottom: "5px" }}>
+                        Tổng Tiền :
+                        {totalCoins > 0 ? (<>{totalCoins}$</>) : (<>0 $</>)}
+                    </div>
+                    {result.map((item,index) => (
+                        <ProductCart index={index} item={item} key={item.id} />
+                    ))}
+                </>
+            ) : (<>Chưa có sản phẩm nào</>)}
         </>
     )
 }
